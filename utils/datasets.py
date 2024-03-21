@@ -85,7 +85,7 @@ def _load_audio_sample(filepath,
 
 
 def _esc10_csv_to_tf_dataset(cfg, esc_csv, audio_path,string_lookup_layer,
-                             to_cache=True, return_clip_labels=False,
+                             return_clip_labels=False,
                              return_arrays=False):
     
     esc_csv['filename'] = esc_csv['filename'].astype('str')
@@ -150,7 +150,7 @@ def _esc10_csv_to_tf_dataset(cfg, esc_csv, audio_path,string_lookup_layer,
 
     ds = tf.data.Dataset.from_tensor_slices((X, y))
     ds = ds.batch(cfg.train_parameters.batch_size)
-    if to_cache:
+    if cfg.dataset.to_cache:
         ds = ds.cache()
     ds = ds.prefetch(buffer_size=tf.data.AUTOTUNE)
     
@@ -212,7 +212,7 @@ def _add_garbage_class_to_df(dataframe,
 
     
 
-def load_ESC_10(cfg, to_cache=True):
+def load_ESC_10(cfg):
     '''Load ESC-10 dataset'''
 
     audio_path = cfg.dataset.audio_path
@@ -337,7 +337,7 @@ def load_ESC_10(cfg, to_cache=True):
                                         esc_csv=train_esc_csv,
                                         audio_path=audio_path,
                                         string_lookup_layer=string_lookup_layer,
-                                        to_cache=to_cache)
+                                        )
 
 
 
@@ -346,19 +346,18 @@ def load_ESC_10(cfg, to_cache=True):
                                         esc_csv=validation_esc_csv,
                                         audio_path=audio_path,
                                         string_lookup_layer=string_lookup_layer,
-                                        to_cache=to_cache)
+                                        )
 
     # Load test data 
     test_ds, clip_labels = _esc10_csv_to_tf_dataset(cfg=cfg,
                                        esc_csv=test_esc_csv,
                                        audio_path=audio_path,
                                        string_lookup_layer=string_lookup_layer,
-                                       to_cache=to_cache,
                                        return_clip_labels=True,
                                        return_arrays=True)
     return train_ds, valid_ds, test_ds, clip_labels
     
-def load_custom_esc_like_multiclass(cfg, to_cache=True):
+def load_custom_esc_like_multiclass(cfg):
     '''Loads custom dataset provided in ESC-like format (see readme for details).
        Data must be multiclass / mono-label, i.e. only one label per sample.
        A function to load a custom dataset with multilabel support will be provided separately'''
@@ -482,7 +481,7 @@ def load_custom_esc_like_multiclass(cfg, to_cache=True):
                                         esc_csv=train_csv,
                                         audio_path=audio_path,
                                         string_lookup_layer=string_lookup_layer,
-                                        to_cache=to_cache)
+                                        )
 
 
     # Load validation data 
@@ -490,7 +489,7 @@ def load_custom_esc_like_multiclass(cfg, to_cache=True):
                                         esc_csv=validation_csv,
                                         audio_path=audio_path,
                                         string_lookup_layer=string_lookup_layer,
-                                        to_cache=to_cache)
+                                        )
 
 
     # Load test data 
@@ -498,7 +497,6 @@ def load_custom_esc_like_multiclass(cfg, to_cache=True):
                                        esc_csv=test_csv,
                                        audio_path=audio_path,
                                        string_lookup_layer=string_lookup_layer,
-                                       to_cache=to_cache,
                                        return_clip_labels=True,
                                        return_arrays=True)
 
@@ -558,7 +556,7 @@ def _prepare_fsd50k_csvs(cfg):
     print("Done preparing FSD50K csv files !")
 
 
-def load_FSD50K(cfg, to_cache=True):
+def load_FSD50K(cfg):
     '''Loads FSD50K dataset.'''
 
     dev_audio_folder = cfg.dataset_specific.fsd50k.dev_audio_folder
@@ -678,7 +676,7 @@ def load_FSD50K(cfg, to_cache=True):
                                         esc_csv=train_csv,
                                         audio_path=dev_audio_folder,
                                         string_lookup_layer=string_lookup_layer,
-                                        to_cache=to_cache)
+                                        )
 
 
     # Load validation data 
@@ -686,7 +684,7 @@ def load_FSD50K(cfg, to_cache=True):
                                         esc_csv=validation_csv,
                                         audio_path=dev_audio_folder,
                                         string_lookup_layer=string_lookup_layer,
-                                        to_cache=to_cache)
+                                        )
 
 
     # Load test data 
@@ -694,7 +692,6 @@ def load_FSD50K(cfg, to_cache=True):
                                                     esc_csv=test_csv,
                                                     audio_path=eval_audio_folder,
                                                     string_lookup_layer=string_lookup_layer,
-                                                    to_cache=to_cache,
                                                     return_clip_labels=True,
                                                     return_arrays=True)
     

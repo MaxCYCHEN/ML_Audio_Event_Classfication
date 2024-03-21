@@ -5,7 +5,7 @@
 #  * the root directory of this software component.
 #  * If no LICENSE file comes with this software, it is provided AS-IS.
 #  *--------------------------------------------------------------------------------------------*/
-
+import argparse
 import sys,os,logging
 import warnings
 warnings.filterwarnings("ignore")
@@ -20,7 +20,7 @@ sys.path.append(os.path.abspath('./utils/models'))
 sys.path.append(os.path.abspath('./common'))
 from utils import get_config, setup_seed, train
 
-@hydra.main(version_base=None, config_path="", config_name="miniresnetv2_1stacks_64x50_config")
+@hydra.main(version_base=None, config_path="cfg", config_name='my_config')
 def main(cfg : DictConfig) -> None:
     print(cfg)
     #initilize configuration & mlflow
@@ -34,4 +34,5 @@ def main(cfg : DictConfig) -> None:
     train(configs)
 
 if __name__ == "__main__":
+
     main()
