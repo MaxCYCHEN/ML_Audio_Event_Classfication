@@ -1,7 +1,7 @@
-# tiny_nu_audio
+# ML_Audio_Event_Classfication
 An Audio event detection training tool &amp; deployment
-- This is reference from ST's [audio_event_detection](https://github.com/STMicroelectronics/stm32ai-modelzoo/tree/main/audio_event_detection)
-- We easy the process of training and deployment.
+
+- We easy the process of training and deployment on MCU.
 
 
 ## 1. First step
@@ -32,8 +32,11 @@ An Audio event detection training tool &amp; deployment
 - Use `Test` tab in `train.ipynb` to test the tflite model with single test audio file which not go through preprocessing (rearranging the audio file). This testing is more like MCU inference scenario.
 - <img src="https://github.com/MaxCYCHEN/tiny_nu_audio/assets/105192502/812386b6-9ac0-4909-a12a-504bef43df4c" width="40%">
 
+### 4. Fully test on Board (Optional)
+- In `board_test` folder, we offer a pyOCD script to communicate the board to test all test dataset.
+- We have a chance to test large number dataset from MCU and get the result. 
 
-### 4. Deployment
+### 5. Deployment
 - Utilize the `Deployment` tab in `train.ipynb` to convert the TFLite model to C source/header files and Vela TFLite.
 -  <img src="https://github.com/MaxCYCHEN/tiny_nu_audio/assets/105192502/09eca44b-74c9-45a8-8124-f855255263d0" width="40%">
 
