@@ -65,7 +65,7 @@ def gen_h_user_file(config):
         f.write('#define AUDIO_DET_SENSOR_TYPE               COM_TYPE_MIC\n')
         f.write('#define AUDIO_DET_SENSOR_NAME               "imp34dt05"\n')
         # NOTE : Letting user choose mic ODR.
-        f.write('#define AUDIO_DET_SENSOR_ODR                ({}.0F)\n'.format(config.pre_processing.target_rate))
+        f.write('#define AUDIO_DET_SENSOR_ODR                ({}U)\n'.format(config.pre_processing.target_rate))
         f.write('#define AUDIO_DET_SENSOR_FS                 (112.5F)\n')
         f.write('#define AUDIO_DET_NB_SAMPLES                (0U)\n')
         # NOTE : Update this when we support additional preprocessing types
