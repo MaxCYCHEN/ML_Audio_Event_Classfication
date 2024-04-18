@@ -114,7 +114,7 @@ def get_scratch_model(cfg):
     miniresnetv2 = add_head(backbone=backbone,
                           n_classes=n_classes,
                           trainable_backbone=True,
-                          add_flatten=False,
+                          add_flatten=True,
                           functional=True,
                           activation=activation,
                           dropout=cfg.model.dropout)
