@@ -1,6 +1,5 @@
 # This project
-workspace
-datasets
+datasets/ESC-50
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

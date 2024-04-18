@@ -5,14 +5,14 @@ set IMAGE_SRC_HEIGHT=320
 ::set LABEL_SRC_FILE=..\labels\labels_mobilenet_v2_1.0_224.txt
 ::set GEN_LABEL_FILE_NAME=Labels
 
-set MODEL_SRC_DIR=..\workspace\miniresnetv2_ESC10_proj_2024_03_21_13_27_32\quantized_models
+set MODEL_SRC_DIR=..\workspace\miniresnetv2_ESC10_proj\quantized_models
 set MODEL_SRC_FILE=quantized_model.tflite
 set MODEL_OPTIMISE_FILE=quantized_model_vela.tflite
 ::The vela OPTIMISE_FILE should be SRC_FILE_NAME + _vela
 
 set TEMPLATES_DIR=Tool\tflite2cpp\templates
 
-set GEN_SRC_DIR=..\workspace\miniresnetv2_ESC10_proj_2024_03_21_13_27_32\quantized_models\vela
+set GEN_SRC_DIR=..\workspace\miniresnetv2_ESC10_proj\quantized_modelsela
 set GEN_INC_DIR=generated\include
 
 ::vela configure variable section
