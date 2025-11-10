@@ -43,4 +43,7 @@ An Audio event detection training tool &amp; deployment
 ## 3. Inference code
 - [ML_M460_SampleCode](https://github.com/OpenNuvoton/ML_M460_SampleCode)
 - [M55M1]
+## 4. Reference
+- [stm32ai-modelzoo-services/audio_event_detection](https://github.com/STMicroelectronics/stm32ai-modelzoo-services/tree/main/audio_event_detection)
+- [ESC-50](https://github.com/karolpiczak/ESC-50?tab=readme-ov-file#download)
 
